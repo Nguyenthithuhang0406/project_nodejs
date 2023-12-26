@@ -5,9 +5,9 @@ const SHeader = styled.header`
     justify-content: space-between;
     padding: 10px 20px;
     align-items: center;
-    /*.logo{
+     .logo{
         color: #c82525;
-    }*/
+    } 
     .options{
         display: flex;
         align-items: center;

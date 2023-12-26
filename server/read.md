@@ -1,0 +1,6 @@
+CRUD -> POST
+
+GET->
+POST->
+PUT ->
+DELETE ->

@@ -1,8 +1,30 @@
-# React + Vite
+User :
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+id
+createdAt
+updatedAt
+username
+password
+following []user
+followers []user
+Post
 
-Currently, two official plugins are available:
+id
+createdAt
+updatedAt
+title
+content
+auth : user
+hastag
+LESSON10 : AUTHENTICATION
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Backend bcrypt
+relationships
+
+one to one : vợ vs chồng one to many : vua vs vợ many to many :
+
+-Cach xu li relationship trong mongodb
++embed documents
++reference
+
+-documents <= 16mb

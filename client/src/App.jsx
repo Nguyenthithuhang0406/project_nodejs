@@ -1,13 +1,17 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from './shared/layout';
-import Home from './page/Home';
-import Register from './page/Register';
-import Login from './page/Login';
-import About from './page/About';
-import Contact from './page/Contact';
-import NotFound from './page/NotFound';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./shared/layout";
+import Home from "./page/Home";
+import Register from "./page/Register";
+import Login from "./page/Login";
+import About from "./page/About";
+import Contact from "./page/Contact";
+import NotFound from "./page/NotFound";
+import "react-toastify/dist/ReactToastify.css";
+
+import Profile from "./page/Profile/index";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
@@ -19,10 +23,11 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
-    
+      <ToastContainer />
     </BrowserRouter>
   );
 };

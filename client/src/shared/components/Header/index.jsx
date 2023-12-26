@@ -2,7 +2,8 @@
 import React from 'react';
 import { SHeader } from './style';
 import { Link } from 'react-router-dom';
-//import { Image } from 'antd';
+// eslint-disable-next-line no-unused-vars
+import { Image } from 'antd';
 
 const Header = () => {
   return (
@@ -17,6 +18,9 @@ const Header = () => {
             </li>
             <li>
                 <Link to={"/contact"}>Contact</Link>
+            </li>
+            <li>
+                <Link to={"/profile"}>Profile</Link>
             </li>
         </ul>
     </SHeader>
