@@ -28,3 +28,6 @@ one to one : vợ vs chồng one to many : vua vs vợ many to many :
 +reference
 
 -documents <= 16mb
+CRUD -> POSTS
+
+GET -> POST -> PUT -> jwt -> post exist -> user created post -> DELETE ->

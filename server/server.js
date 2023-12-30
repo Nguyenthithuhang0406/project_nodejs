@@ -4,7 +4,8 @@ const {connectDB} = require("./src/utils/db");
 const {authRoute} = require("./src/routes/auth-route");
 const {userRoute} = require("./src/routes/user-route");
 const {verifyTokenMiddleware} = require("./src/middleware/auth-middleware");
-const cors = require("cors");
+const cors = require("cors")
+const {postRoute} = require("./src/routes/post-route");
 const app = express();
 
 const PORT = process.env.PORT;
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoute);
+app.use("/api/post", postRoute);
 
 //middleware for auth
 app.use(verifyTokenMiddleware);

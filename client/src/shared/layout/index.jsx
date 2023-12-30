@@ -1,15 +1,22 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import useAuth from '../../hooks/useAuth';
+import MainContent from '../components/MainContent';
 
 
 // eslint-disable-next-line react/prop-types
 const Layout = ({children}) => {
+  const {getMe} = useAuth();
+
+  useEffect(() => {
+    getMe();
+  }, []);
   return (
     <div>
         <Header/>
-        {children}
+        <MainContent>{children}</MainContent>
         <Footer/>
     </div>
   );

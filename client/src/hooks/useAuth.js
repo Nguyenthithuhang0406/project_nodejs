@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { request } from "../shared/utils/axios-http";
+import { request, requestWithToken } from "../shared/utils/axios-http";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import AppContext from "antd/es/app/context";
 
 function useAuth() {
   const navigate = useNavigate();
+  const {setUser} = useContext(AppContext);
 
   const login = async (data) => {
     const { username, password } = data;
@@ -20,8 +23,10 @@ function useAuth() {
 
     //local storage
     localStorage.setItem("access_token", token);
+
     toast.success("login success");
-    navigate("/profile");
+    navigate("/");
+    getMe();
   };
 
   const register = async (data) => {
@@ -39,7 +44,19 @@ function useAuth() {
     navigate("/login");
   };
 
-  return { login, register };
+  const getMe = async () => {
+    const res = await requestWithToken({
+        url: "/user/me",
+    });
+    setUser(res.data);
+  };
+
+  const logOut = () => {
+    localStorage.removeItem("access_token");
+    setUser(null);
+  }
+
+  return { login, register, getMe, logOut };
 }
 
 export default useAuth;

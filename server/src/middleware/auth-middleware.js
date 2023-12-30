@@ -1,6 +1,8 @@
 const {findOneUser} = require("../services/user-service");
 const {CustomErr} = require("../utils/error");
 const jwt = require("jsonwebtoken");
+const {argUser} = require("../utils/constants");
+
 const verifyTokenMiddleware = async(req, res, next) => {
     try {
         //check login first via token
@@ -25,6 +27,8 @@ const verifyTokenMiddleware = async(req, res, next) => {
         if(!user){
             throw new CustomEr("Unauthorized", 403);
         }
+
+        req[argUser] = user;
         next();
     }catch (err){
         next(err);

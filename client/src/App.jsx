@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./shared/layout";
 import Home from "./page/Home";
@@ -12,23 +12,37 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Profile from "./page/Profile/index";
 import { ToastContainer } from "react-toastify";
+import { QueryClient, QueryClientProvider } from "react-query";
+import DetailPost from "./page/DetailPost";
+
+
+//create a client
+const queryClient = new QueryClient();
+
+export const AppContext = createContext();
 
 const App = () => {
+  const [user, setUser] = useState(null);
   return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
-      <ToastContainer />
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <AppContext.Provider value={{user, setUser,}}>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/post/:id" element={<DetailPost/>}/>
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+          <ToastContainer />
+        </BrowserRouter>
+      </AppContext.Provider>
+    </QueryClientProvider>
   );
 };
 

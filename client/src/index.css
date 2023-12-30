@@ -7,3 +7,13 @@
   box-sizing: border-box;
   font-family: 'Ubuntu', sans-serif;
 }
+.container {
+  width: 100%;
+  max-width: 1500px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+.ant-modal-title{
+  font-size: 25px !important;
+}

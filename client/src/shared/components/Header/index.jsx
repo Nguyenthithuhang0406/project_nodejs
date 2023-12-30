@@ -1,28 +1,35 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useContext } from 'react';
 import { SHeader } from './style';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { Image } from 'antd';
+import AppContext from 'antd/es/app/context';
+import Auth from './Auth';
+import User from './User';
 
 const Header = () => {
+    const {user} = useContext(AppContext);
   return (
     <SHeader>
-        <h1 className="logo">Social media</h1>
-        <ul className="options">
-            <li>
-                <Link to={"/"}>Home</Link>
-            </li>
-            <li>
-                <Link to={"/about"}>About</Link>
-            </li>
-            <li>
-                <Link to={"/contact"}>Contact</Link>
-            </li>
-            <li>
-                <Link to={"/profile"}>Profile</Link>
-            </li>
-        </ul>
+    <div className='container'>
+        <div className='header-wrapper'>
+            <h1 className="logo">Social media</h1>
+            <ul className="options">
+                <li>
+                    <Link to={"/"}>Home</Link>
+                </li>
+                <li>
+                    <Link to={"/about"}>About</Link>
+                </li>
+                <li>
+                    <Link to={"/contact"}>Contact</Link>
+                </li>
+                {!user ? <Auth/> : <User/>}
+            </ul>
+        </div>
+    </div>
+        
     </SHeader>
   );
 };

@@ -1,15 +1,12 @@
 const {User} = require("../models/user");
-const {v4: uuidv4} = require("uuid");
+const {newID} = require("../utils/main");
 
 const registerService = async(username, password) => {
-    const now = new Date();
     const user = new User({
         username,
         password,
         followers: [],
         followings: [],
-        createdAt: now,
-        id: uuidv4(),
     });
 
     user.save();

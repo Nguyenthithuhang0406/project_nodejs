@@ -1,20 +1,24 @@
 const {Schema, default: mongoose} = require("mongoose");
+const {newID} = require("../utils/main");
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
+    
+    id: {
+        type: String,
+        default: newID(),
+        required: true,
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: new Date(),
+    },
     username: {
         type: String,
         required: true,
     },
     password: {
         type: String,
-        required: true,
-    },
-    id: {
-        type: String,
-        required: true,
-    },
-    createdAt: {
-        type: Date,
         required: true,
     },
     followings: {
@@ -27,6 +31,6 @@ const userSchema = new Schema({
 });
 
 //create model
-const User = mongoose.model("users", userSchema);
+const User = mongoose.model("users", UserSchema);
 
-module.exports = {User};
+module.exports = {User, UserSchema};
