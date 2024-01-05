@@ -1,14 +1,15 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 
 const SFooter = styled.footer`
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
 `;
 
-export {SFooter};
+export { SFooter };

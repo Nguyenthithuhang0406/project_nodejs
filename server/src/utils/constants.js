@@ -1,2 +1,7 @@
 const argUser = "user";
-module.exports = {argUser};
+const DEFAULT_PAGE = {
+  take: "5",
+  page: "1",
+};
+
+module.exports = { argUser, DEFAULT_PAGE };

@@ -16,21 +16,27 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import DetailPost from "./page/DetailPost";
 
 
-//create a client
+// Create a client
 const queryClient = new QueryClient();
 
 export const AppContext = createContext();
 
 const App = () => {
   const [user, setUser] = useState(null);
+
   return (
     <QueryClientProvider client={queryClient}>
-      <AppContext.Provider value={{user, setUser,}}>
+      <AppContext.Provider
+        value={{
+          user,
+          setUser,
+        }}
+      >
         <BrowserRouter>
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/post/:id" element={<DetailPost/>}/>
+              <Route path="/post/:id" element={<DetailPost />} />
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
               <Route path="/about" element={<About />} />
@@ -45,5 +51,4 @@ const App = () => {
     </QueryClientProvider>
   );
 };
-
 export default App;

@@ -1,44 +1,65 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
-import { request } from '../../shared/utils/axios-http';
-import { useQuery } from 'react-query';
-import { SHome } from './style';
+import React, { useEffect, useState } from "react";
+import { request } from "../../shared/utils/axios-http";
+import { useQuery } from "react-query";
+import { SHome } from "./style";
 import PostItem from "../../shared/components/PostItem/index";
-const Home = () => {
-  const [data, setData] = useState([]);
-  // const fetchPosts = as () => {
-  //   try{
-  //     const res = await request({
-  //       url: "/post",
-  //       method: "get",
-  //     });
-  //     setData(res.data);
-  //   }catch(err){
-  //     console.log(err);
-  //   }
-  // };
-  // useEffect(() => {
-  //   fetchPosts();
-  // }, []);
+import { useSearchParams } from "react-router-dom";
 
-  useQuery({
-    queryKey: ["list-posts"],
+import { Pagination } from "antd";
+import { paramsURLToObject } from "../../shared/utils/main";
+import { DEFAULT_PAGE } from "../../shared/utils/constants";
+
+const Home = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageQuery = paramsURLToObject(searchParams);
+  const { take, page } = pageQuery;
+
+  const { data } = useQuery({
+    queryKey: ["list-posts", pageQuery],
     queryFn: async () => {
       const res = await request({
         url: "/post",
+        params: {
+          page: page || DEFAULT_PAGE.page,
+          take: take || DEFAULT_PAGE.take,
+        },
       });
 
-      setData(res.data);
+      return res.data;
     },
   });
-  return(
+
+  useEffect(() => {
+    if (!take || !page) {
+      setSearchParams(DEFAULT_PAGE);
+    }
+  }, [take, page]);
+
+  if (!data) return <></>;
+  const docs = data.docs;
+  const meta = data.meta;
+  return (
     <SHome>
-      {data.map((post) => (
-        <PostItem key={post.postID} post={post}/>
-      ))}
+      <div className="post-wrapper">
+        {docs.map((post) => (
+          <PostItem key={post.postID} post={post} />
+        ))}
+      </div>
+
+      {meta && (
+        <div className="pagination-wrapper">
+          <Pagination
+            total={+meta.total}
+            pageSize={+meta.take}
+            current={+page || DEFAULT_PAGE.page}
+            onChange={(page) => {
+              setSearchParams({ ...pageQuery, page });
+            }}
+          />
+        </div>
+      )}
     </SHome>
   );
-  
 };
-
 export default Home;

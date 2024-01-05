@@ -1,12 +1,18 @@
-const {User} = require("../models/user");
+const { User } = require("../models/user");
 
-const findOneUser = async(username, userID) => {
-    const filter = {
-        $or: [{username: username}, {id: userID}],
-    };
-    const res  = await User.findOne(filter);
+const findOneUser = async (username, userID) => {
+  const filter = {
+    $or: [
+      {
+        username: username,
+      },
+      { id: userID },
+    ],
+  };
 
-    return res;
+  const res = await User.findOne(filter);
+
+  return res;
 };
 
-module.exports = {findOneUser};
+module.exports = { findOneUser };

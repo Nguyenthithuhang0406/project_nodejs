@@ -5,11 +5,12 @@ import React from 'react'
 const DeletePost = () => {
   return (
     <div>
-        <Button type='primary' danger>
-            Delete
-        </Button>
+      <Button type="primary" danger>
+        Delete
+      </Button>
     </div>
   );
 };
+
 
 export default DeletePost;

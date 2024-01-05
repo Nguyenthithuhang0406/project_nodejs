@@ -6,13 +6,13 @@ import { Typography } from "antd";
 const Footer = () => {
   return (
     <SFooter>
-        <Typography
+      <Typography
         style={{
-            color: "#c82525",
+          color: "#c82525",
         }}
-        >
-            Copyright @ 2023 Web74
-        </Typography>
+      >
+        Copyright © 2023 Web74
+      </Typography>
     </SFooter>
   );
 };

@@ -4,10 +4,8 @@ import React from 'react'
 
 const UpdatePost = () => {
   return (
-    <div> 
-        <Button type='primary'>
-            Update
-        </Button>
+    <div>
+      <Button type="primary">Update</Button>
     </div>
   );
 };

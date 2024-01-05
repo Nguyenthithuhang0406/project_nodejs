@@ -15,26 +15,26 @@ const schema = yup.object().shape({
   username: yup.string().required(),
   password: yup.string().required(),
   confirmPassword: yup
-  .string()
-  .required()
-  .oneOf([yup.ref("password")], "Passwords do not match"),
+    .string()
+    .required()
+    .oneOf([yup.ref("password")], "Passwords do not match"),
 });
 
 const Register = () => {
   const {
     handleSubmit,
     control,
-    formState: {errors},
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const {register} = useAuth();
-  
+  const { register } = useAuth();
+
   const onSubmit = async (data) => {
-    try{
+    try {
       register(data);
-    }catch(err){
+    } catch (err) {
       toast.error(extractMessageFromErr(err));
     }
   };
