@@ -1,3 +1,3 @@
 export const extractMessageFromErr = (err) => {
-    return err.response.data;
-  };
+  return err.response.data;
+};

@@ -26,13 +26,16 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-
-  followings: {
-    type: [String],
+  postVisibility: {
+    type: String,
+    default: "all", //"all" | "onlyme" | "onlyFollowers"
   },
-  followers: {
-    type: [String],
-  },
+  // followings: {
+  //   type: [String],
+  // },
+  // followers: {
+  //   type: [String],
+  // },
   avatar: String,
 });
 

@@ -1,6 +1,6 @@
 const argUser = "user";
 const DEFAULT_PAGE = {
-  take: "5",
+  take: "8",
   page: "1",
 };
 

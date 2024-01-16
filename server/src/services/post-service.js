@@ -2,12 +2,13 @@ const { ObjectId } = require("mongodb");
 const { Post } = require("../models/post");
 const { newID } = require("../utils/main");
 
-const createPostService = ({ title, content, hashTag }, author) => {
+const createPostService = ({ title, content, hashTag, image }, author) => {
   const post = new Post({
     title,
     content,
     hashTag,
     author,
+    image,
   });
 
   post.save();

@@ -1,12 +1,12 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { request } from "../../shared/utils/axios-http";
-import { useQuery } from "react-query";
 import { SHome } from "./style";
-import PostItem from "../../shared/components/PostItem/index";
-import { useSearchParams } from "react-router-dom";
-
+import { request } from "../../shared/utils/axios-http";
+import PostItem from "../../shared/components/PostItem";
+import { useQuery } from "react-query";
 import { Pagination } from "antd";
+import { useSearchParams } from "react-router-dom";
 import { paramsURLToObject } from "../../shared/utils/main";
 import { DEFAULT_PAGE } from "../../shared/utils/constants";
 
@@ -62,4 +62,5 @@ const Home = () => {
     </SHome>
   );
 };
+
 export default Home;

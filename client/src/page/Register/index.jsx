@@ -1,15 +1,17 @@
-
-// eslint-disable-next-line no-unused-vars
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React from "react";
+import { Button, Input } from "antd";
+import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorsMessage from "../../shared/components/ErrorMessages";
-import { Button, Input } from 'antd';
-import { Controller, useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import { extractMessageFromErr } from '../../shared/utils/error';
-import { SAuth } from '../../shared/styles/main';
-import useAuth from '../../hooks/useAuth';
-import { yupResolver } from '@hookform/resolvers/yup';
+import axios from "axios";
+import { toast } from "react-toastify";
+import { extractMessageFromErr } from "../../shared/utils/error";
+import { useNavigate } from "react-router-dom";
+import { SAuth } from "../../shared/styles/main";
+import { request } from "../../shared/utils/axios-http";
+import useAuth from "../../hooks/useAuth";
 
 const schema = yup.object().shape({
   username: yup.string().required(),

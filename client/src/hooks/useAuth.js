@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { request, requestWithToken } from "../shared/utils/axios-http";
 import { useContext } from "react";
-import {AppContext} from "../App";
+import { AppContext } from "../App";
 
 function useAuth() {
   const navigate = useNavigate();

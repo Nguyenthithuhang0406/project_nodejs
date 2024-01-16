@@ -1,4 +1,4 @@
 export const DEFAULT_PAGE = {
-    take: "5",
-    page: "1",
-  };
+  take: "8",
+  page: "1",
+};

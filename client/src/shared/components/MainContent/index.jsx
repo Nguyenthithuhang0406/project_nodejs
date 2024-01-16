@@ -11,4 +11,7 @@ const MainContent = ({ children }) => {
   );
 };
 export default MainContent;
-const SMainContent = styled.div``;
+
+const SMainContent = styled.div`
+  padding-bottom: 25px;
+`;

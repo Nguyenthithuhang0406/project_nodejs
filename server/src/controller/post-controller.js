@@ -23,14 +23,19 @@ const getPostController = async (req, res, next) => {
 };
 const createPostController = (req, res, next) => {
   try {
+    const file = req.file;
+    if (!file) {
+      throw new CustomErr("file is required", 400);
+    }
     const { title, content, hashTag } = req.body;
-    if (!title || !content) {
+    if (!title || !content || !file) {
       throw new CustomErr("title and content are required", 400);
     }
     const payload = {
       title,
       content,
       hashTag,
+      image: `posts/${file.filename}`,
     };
     const user = req[argUser];
     createPostService(payload, user);

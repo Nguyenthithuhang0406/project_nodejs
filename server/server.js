@@ -10,6 +10,9 @@ const app = express();
 
 const PORT = process.env.PORT;
 
+//server static file
+app.use("/assets", express.static("public"));
+
 //CORS
 app.use(cors());
 
